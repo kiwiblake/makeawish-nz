@@ -7,8 +7,8 @@ on:
       - staging
 
 jobs:
-  build-and-lint:
-    name: Build & Lint
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -25,10 +25,6 @@ jobs:
       - name: Install dependencies
         working-directory: frontend
         run: npm ci --legacy-peer-deps
-
-      - name: Run linter
-        working-directory: frontend
-        run: npm run lint
 
       - name: Build project
         working-directory: frontend

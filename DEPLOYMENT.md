@@ -48,7 +48,7 @@ git push -u origin feature/your-feature-name
 
 Then create a Pull Request targeting the `staging` branch.
 
-- GitHub Actions will automatically run build and lint checks
+- GitHub Actions will automatically run build checks
 - Get your PR reviewed and approved
 - Merge to `staging`
 
@@ -76,7 +76,7 @@ To enforce reviews before merging, set up branch protection rules:
    - Check: **Require a pull request before merging**
    - Check: **Require approvals** (set to 1 or more)
    - Check: **Require status checks to pass before merging**
-   - Select required status checks: `Build & Lint`
+   - Select required status checks: `Build`
    - Check: **Require branches to be up to date before merging**
 5. Repeat for `staging` branch with the same settings
 
@@ -112,8 +112,7 @@ In the Vercel dashboard, you can:
 GitHub Actions runs on every PR to `staging` or `main`:
 
 1. **Install** - Installs dependencies
-2. **Lint** - Runs ESLint to check code quality
-3. **Build** - Ensures the project builds successfully
+2. **Build** - Ensures the project builds successfully
 
 PRs cannot be merged until these checks pass.
 
@@ -122,6 +121,5 @@ PRs cannot be merged until these checks pass.
 | Action | Command |
 |--------|---------|
 | Start local dev | `cd frontend && npm run dev` |
-| Run linter | `cd frontend && npm run lint` |
 | Build locally | `cd frontend && npm run build` |
 | Preview build | `cd frontend && npm run preview` |
