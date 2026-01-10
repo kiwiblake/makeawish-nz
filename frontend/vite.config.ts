@@ -32,6 +32,9 @@ export default defineConfig({
 	plugins: [react(), splitVendorChunkPlugin(), tsConfigPaths(), injectHTML()],
 	resolve: {
 		alias: {
+			"@/components/ui": path.resolve(__dirname, "./src/extensions/shadcn/components"),
+			"@/hooks": path.resolve(__dirname, "./src/extensions/shadcn/hooks"),
+			"@/lib": path.resolve(__dirname, "./src/lib"),
 			"@": path.resolve(__dirname, "./src"),
 		},
 	},
