@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    /* Make-A-Wish Brand Colors (Light Theme) */
+    --background: 0 0% 100%; /* White */
+    --foreground: 210 2% 47%; /* Dark Gray */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 210 2% 47%; /* Dark Gray */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 210 2% 47%; /* Dark Gray */
+    --primary: 212 100% 36%; /* MAW Blue #0057B8 */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 178 100% 36%; /* MAW Teal #00BAB3 */
+    --secondary-foreground: 0 0% 100%; /* White */
+    --muted: 240 1% 73%; /* MAW Light Gray #BBBCBC */
+    --muted-foreground: 210 2% 47%; /* MAW Dark Gray #75787B */
+    --accent: 48 96% 72%; /* MAW Yellow #FBD872 */
+    --accent-foreground: 210 2% 47%; /* MAW Dark Gray #75787B */
+    --destructive: 358 100% 67%; /* MAW Red #FF585D */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --orange: 37 100% 64%; /* MAW Orange #FFB549 */
+    --orange-foreground: 210 2% 47%; /* MAW Dark Gray #75787B */
+    --light-blue: 203 69% 73%; /* MAW Light Blue #8DC8E8 */
+    --light-blue-foreground: 210 2% 47%; /* MAW Dark Gray #75787B */
+    --border: 240 1% 73%; /* MAW Light Gray #BBBCBC */
+    --input: 240 1% 73%; /* MAW Light Gray #BBBCBC */
+    --ring: 212 100% 36%; /* MAW Blue #0057B8 */
+    --radius: 0.5rem;
+    /* Chart colors can be adjusted later if needed, using brand accents */
+    --chart-1: 38 100% 64%; /* Orange */
+    --chart-2: 178 100% 36%; /* Teal */
+    --chart-3: 208 100% 36%; /* Blue */
+    --chart-4: 46 95% 71%; /* Yellow */
+    --chart-5: 358 100% 67%; /* Red */
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}

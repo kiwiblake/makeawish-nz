@@ -1,0 +1,12 @@
+# Backend is no longer needed - frontend only project
+backend/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
