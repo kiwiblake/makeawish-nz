@@ -20,7 +20,7 @@ This is the Make-A-Wish New Zealand website, a React frontend built with Builder
 
 ```
 makeawish/
-├── frontend/                 # Main application
+├── frontend/                 # Main application (THIS IS THE DEPLOYABLE APP)
 │   ├── api/                  # Vercel Edge Functions
 │   │   └── subscribe.ts      # Campaign Monitor newsletter signup
 │   ├── src/
@@ -49,24 +49,41 @@ npm run build                  # Production build to dist/
 
 ## Deployment
 
-### Git + Vercel (Automatic)
+### IMPORTANT: Always deploy from the `frontend` directory
 
-The project is connected to GitHub and Vercel. Pushing to `main` triggers automatic deployment:
+The Vercel project is `frontend`. Always `cd frontend` before running Vercel commands.
 
+### Git Workflow
+
+| Branch | Environment | URL |
+|--------|-------------|-----|
+| `main` | Production | https://frontend-eight-rho-93.vercel.app |
+| `staging` | Staging/Preview | https://staging-makeawish-nz.vercel.app |
+
+**Deploy to Production:**
 ```bash
+git checkout main
 git add -A
 git commit -m "Your commit message"
-git push
+git push origin main
 ```
 
-Vercel will automatically build and deploy.
+**Deploy to Staging:**
+```bash
+git checkout staging
+git add -A
+git commit -m "Your commit message"
+git push origin staging
+```
+
+Vercel automatically builds and deploys when you push to these branches.
 
 ### Manual Vercel Deployment
 
 ```bash
-cd frontend
-vercel --prod    # Deploy to production
-vercel           # Deploy preview
+cd frontend                   # IMPORTANT: Must be in frontend directory
+vercel --prod                 # Deploy to production
+vercel                        # Deploy preview
 ```
 
 ### Vercel Configuration
@@ -80,14 +97,15 @@ The `vercel.json` is configured for:
 
 Set these in Vercel Dashboard > Project Settings > Environment Variables:
 
-| Variable | Description |
-|----------|-------------|
-| `CAMPAIGN_MONITOR_API_KEY` | API key for newsletter subscriptions |
-| `CAMPAIGN_MONITOR_LIST_ID` | List ID for newsletter subscriptions |
-| `NODE_VERSION` | Set to `20` for stable builds |
+| Variable | Description | Environments |
+|----------|-------------|--------------|
+| `CAMPAIGN_MONITOR_API_KEY` | API key for newsletter subscriptions | Production, Preview |
+| `CAMPAIGN_MONITOR_LIST_ID` | List ID for newsletter subscriptions | Production, Preview |
+| `NODE_VERSION` | Set to `20` for stable builds | Production, Preview |
 
-To add via CLI:
+To add via CLI (from frontend directory):
 ```bash
+cd frontend
 vercel env add CAMPAIGN_MONITOR_API_KEY production
 vercel env add CAMPAIGN_MONITOR_LIST_ID production
 ```
@@ -111,6 +129,11 @@ vercel env add CAMPAIGN_MONITOR_LIST_ID production
 - Ensure `--ignore-scripts` is in the install command (Builder.io has native deps)
 - Check Node version is 20.x (set via `NODE_VERSION` env var)
 
+### Wrong project deployed
+- Always run `cd frontend` before `vercel` commands
+- Check you're in the right directory with `pwd`
+- Verify project with `cat .vercel/project.json`
+
 ### Dependencies
 - Keep dependencies minimal (~50 packages)
 - The project was cleaned from 394 to ~50 dependencies
@@ -119,12 +142,21 @@ vercel env add CAMPAIGN_MONITOR_LIST_ID production
 ## Useful Commands
 
 ```bash
+# ALWAYS cd to frontend first
+cd frontend
+
 # Check Vercel deployment status
-vercel ls frontend
+vercel ls
 
 # View deployment logs
 vercel logs <deployment-url>
 
-# Check linked project
+# Check which project you're linked to
+cat .vercel/project.json
+
+# List all projects
 vercel project ls
+
+# Check environment variables
+vercel env ls
 ```
