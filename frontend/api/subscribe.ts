@@ -1,15 +1,23 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+export const config = {
+  runtime: 'edge',
+};
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(request: Request) {
   // Only allow POST
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ message: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
-  const { email, name } = req.body;
+  const { email, name } = await request.json();
 
   if (!email || !name) {
-    return res.status(400).json({ message: 'Email and name are required' });
+    return new Response(JSON.stringify({ message: 'Email and name are required' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   const apiKey = process.env.CAMPAIGN_MONITOR_API_KEY;
@@ -17,7 +25,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (!apiKey || !listId) {
     console.error('Missing Campaign Monitor configuration');
-    return res.status(500).json({ message: 'Server configuration error' });
+    return new Response(JSON.stringify({ message: 'Server configuration error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   try {
@@ -27,7 +38,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Basic ' + Buffer.from(apiKey + ':').toString('base64'),
+          'Authorization': 'Basic ' + btoa(apiKey + ':'),
         },
         body: JSON.stringify({
           EmailAddress: email,
@@ -40,22 +51,34 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     );
 
     if (response.ok) {
-      return res.status(200).json({ message: 'Successfully subscribed!' });
+      return new Response(JSON.stringify({ message: 'Successfully subscribed!' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     const errorData = await response.json().catch(() => ({}));
 
     // Code 203 means already subscribed
     if (errorData.Code === 203) {
-      return res.status(200).json({ message: 'You are already subscribed.' });
+      return new Response(JSON.stringify({ message: 'You are already subscribed.' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     console.error('Campaign Monitor error:', response.status, errorData);
-    return res.status(400).json({
+    return new Response(JSON.stringify({
       message: errorData.Message || 'Failed to subscribe. Please try again.'
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('Subscription error:', error);
-    return res.status(500).json({ message: 'An error occurred. Please try again.' });
+    return new Response(JSON.stringify({ message: 'An error occurred. Please try again.' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }
