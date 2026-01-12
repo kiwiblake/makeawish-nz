@@ -78,11 +78,8 @@ const logisticsSchema = z.object({
   availabilityNotes: z.string().max(500).optional(),
 });
 
-// Step 4: Consent
+// Step 4: Newsletter & Honeypot
 const consentSchema = z.object({
-  agreeToTerms: z.boolean().refine((val) => val === true, {
-    message: "You must agree to the terms and conditions",
-  }),
   receiveNewsletter: z.boolean().default(false),
   _honeypot: z.string().optional(),
 });
@@ -105,7 +102,7 @@ export const getFieldsForStep = (step: number): (keyof GiftInKindFormData)[] => 
     case 3:
       return ["location", "region", "deliveryPreference", "availabilityNotes"];
     case 4:
-      return ["agreeToTerms", "receiveNewsletter"];
+      return ["receiveNewsletter"];
     default:
       return [];
   }

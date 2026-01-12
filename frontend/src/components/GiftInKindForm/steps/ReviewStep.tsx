@@ -58,7 +58,7 @@ export function ReviewStep({ form, isSubmitting }: Props) {
           </p>
           {values.isOrganization && values.companyName && (
             <p>
-              <strong>Organization:</strong> {values.companyName}
+              <strong>Organisation:</strong> {values.companyName}
             </p>
           )}
         </ReviewSection>
@@ -101,31 +101,8 @@ export function ReviewStep({ form, isSubmitting }: Props) {
         </ReviewSection>
       </div>
 
-      {/* Consent Checkboxes */}
+      {/* Newsletter Checkbox */}
       <div className="space-y-4">
-        <FormField
-          control={form.control}
-          name="agreeToTerms"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                  disabled={isSubmitting}
-                />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel>
-                  I agree to the terms and conditions and confirm that the information
-                  provided is accurate *
-                </FormLabel>
-                <FormMessage />
-              </div>
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="receiveNewsletter"

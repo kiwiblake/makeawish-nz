@@ -53,7 +53,6 @@ export function GiftInKindForm({
       region: "",
       deliveryPreference: "",
       availabilityNotes: "",
-      agreeToTerms: false,
       receiveNewsletter: false,
       _honeypot: "",
     },

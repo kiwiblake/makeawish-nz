@@ -108,7 +108,7 @@ export function DonorInfoStep({ form, isSubmitting }: Props) {
               />
             </FormControl>
             <div className="space-y-1 leading-none">
-              <FormLabel>I am representing an organization or company</FormLabel>
+              <FormLabel>I am representing an organisation or company</FormLabel>
             </div>
           </FormItem>
         )}
@@ -120,10 +120,10 @@ export function DonorInfoStep({ form, isSubmitting }: Props) {
           name="companyName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-semibold">Organization/Company Name</FormLabel>
+              <FormLabel className="font-semibold">Organisation/Company Name</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="Your organization name"
+                  placeholder="Your organisation name"
                   {...field}
                   disabled={isSubmitting}
                 />
