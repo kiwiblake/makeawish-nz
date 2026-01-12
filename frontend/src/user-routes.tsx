@@ -7,6 +7,7 @@ import { RouteObject } from "react-router-dom";
 
 
 const App = lazy(() => import("./pages/App.tsx"));
+const DonateGiftInKind = lazy(() => import("./pages/DonateGiftInKind.tsx"));
 const Fundraise = lazy(() => import("./pages/Fundraise.tsx"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage.tsx"));
 const WishStory = lazy(() => import("./pages/WishStory.tsx"));
@@ -16,6 +17,8 @@ export const userRoutes: RouteObject[] = [
 
 
 	{ path: "/", element: <App />},
+	{ path: "/donate-gift-in-kind", element: <DonateGiftInKind />},
+	{ path: "/donate-gift", element: <DonateGiftInKind />},
 	{ path: "/fundraise", element: <Fundraise />},
 	{ path: "/not-found-page", element: <NotFoundPage />},
 	{ path: "/notfoundpage", element: <NotFoundPage />},
