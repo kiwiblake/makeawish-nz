@@ -45,7 +45,7 @@ const DonateGiftInKind = () => {
         {/* How to donate */}
         <InfoSectionWithImage
           title="How to donate a gift in kind"
-          text="<p>Ready to make a difference? Simply fill out our donation form below and our team will get back to you. We welcome gifts from both individuals and organisations.</p><p>Every wish child is unique, so we may not always have a wish that matches your specific offer right away. If that's the case, we'll work with you to explore other meaningful ways you can support Make-A-Wish New Zealand.</p>"
+          text="<p>Ready to make a difference? Simply fill out our donation form below and our team will get back to you. We welcome gifts from both individuals and organisations.</p><p>Every wish child is unique, so we may not always have a wish that matches your specific offer right away. If that's the case, we'll work with you to explore other meaningful ways you can support Make-A-Wish NZ.</p>"
           imageUrl="https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/fundraiseimage.webp"
           imageAlt="Make-A-Wish team member"
           reverseLayout={true}
@@ -83,7 +83,7 @@ const DonateGiftInKind = () => {
           text="<p>The safety and wellbeing of our wish children is our top priority. We have established quality guidelines to ensure every Gift in Kind meets our standards and creates a positive wish experience.</p><p>Depending on your donation, we may need the following documentation:</p>"
           bulletPointsText={`Proof of being a registered company/sole trader/charity - Any company or small business providing services on a wish must be registered with the New Zealand Companies Office and provide us with their New Zealand Business Number (NZBN). Charities must be registered with Charities Services NZ and provide their registration number.
 Public Liability Insurance - Any tradesperson, venue etc. must have public liability insurance and provide us with a copy of their certificate.
-Evidence of the normal cost of your gift - In order for us to report on your donation for any audit purposes, we need written confirmation from you (e.g., an email) of how much you would normally charge for the goods or services that you are offering Make-A-Wish New Zealand.
+Evidence of the normal cost of your gift - In order for us to report on your donation for any audit purposes, we need written confirmation from you (e.g., an email) of how much you would normally charge for the goods or services that you are offering Make-A-Wish NZ.
 Proof of purchase - If you are donating items, tickets or experiences that you have purchased, you will need to provide us with proof of purchase to show where and how it was purchased, along with official booking details.`}
           imageUrl="https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/fundraisingatwork.webp"
           imageAlt="Quality assurance process"

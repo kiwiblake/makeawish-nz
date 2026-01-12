@@ -1,5 +1,16 @@
 # Make-A-Wish New Zealand Website
 
+## CRITICAL: Deployment Rules
+
+**ALWAYS run Vercel commands from the `frontend` directory:**
+```bash
+cd /Users/blake.ramage/Desktop/makeawish/frontend && vercel --prod
+```
+
+Git commands can run from root, but Vercel MUST be from `frontend/`.
+
+---
+
 ## Project Overview
 
 This is the Make-A-Wish New Zealand website, a React frontend built with Builder.io as the CMS. The site allows the organization to manage content visually through Builder.io's visual editor while maintaining a custom React codebase.
