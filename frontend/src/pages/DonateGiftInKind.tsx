@@ -36,7 +36,7 @@ const DonateGiftInKind = () => {
         {/* What are gifts in kind? */}
         <InfoSectionWithImage
           title="What are gifts in kind?"
-          text="<p>Gifts in Kind can range from a box at an arena or stadium, allowing a wish child to watch the match of their dreams, a hotel stay for a wish family to spend some quality time together during their wish, to a tasty meal at a restaurant.</p><p>We simply couldn't grant life-changing wishes without the support and generosity of businesses and community partners across New Zealand. Whether you can offer a ride in a limo or an Apple iPad, please get in touch to find out more.</p>"
+          text="<p>A Gift in Kind is a non-monetary donation of goods, services or experiences. This could be anything from VIP seats at a rugby match, accommodation for a family during their wish trip, or a special dining experience at a local restaurant.</p><p>The generosity of New Zealand businesses and community supporters makes our wish-granting possible. From technology and travel to unique experiences, your contribution - big or small - can help create magical moments for wish children across Aotearoa.</p>"
           imageUrl="https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/Jaspers-Wish.webp"
           imageAlt="Child receiving a special gift"
           reverseLayout={false}
@@ -45,7 +45,7 @@ const DonateGiftInKind = () => {
         {/* How to donate */}
         <InfoSectionWithImage
           title="How to donate a gift in kind"
-          text="<p>If you would like to donate a gift in kind, please complete our form below and a member of our team will be in touch. You can donate a gift in kind as an individual or a company.</p><p>Please note, our wishes are just as unique as our wish children and in some cases, we may not have a wish to match your offer too. If we cannot make use of your offer to grant a wish, we will make you aware of other ways you could support Make-A-Wish New Zealand.</p>"
+          text="<p>Ready to make a difference? Simply fill out our donation form below and our team will get back to you. We welcome gifts from both individuals and organisations.</p><p>Every wish child is unique, so we may not always have a wish that matches your specific offer right away. If that's the case, we'll work with you to explore other meaningful ways you can support Make-A-Wish New Zealand.</p>"
           imageUrl="https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/fundraiseimage.webp"
           imageAlt="Make-A-Wish team member"
           reverseLayout={true}
@@ -59,8 +59,8 @@ const DonateGiftInKind = () => {
               Gifts we would love to receive!
             </h2>
             <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-              There are certain items, services and experiences that are used to help us grant many wishes.
-              We are always in need of the following:
+              Certain items, services and experiences are particularly helpful for granting wishes.
+              Here are some of the things we're often looking for:
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {giftCategories.map((category, index) => (
@@ -80,10 +80,10 @@ const DonateGiftInKind = () => {
         {/* Quality control framework */}
         <InfoSectionWithImage
           title="Quality control framework"
-          text="<p>Our wish children's safety and happiness is at the heart of everything we do. We have developed a quality control framework which allows us to seek and grant gifts in kind without compromising the quality of the wish.</p><p>To accept your donation, please provide us with the documentation below that is relevant to your gift in kind:</p>"
-          bulletPointsText={`Proof of being a registered company/sole trader/charity - Any company or small business providing services on a wish must be government registered with Companies House or HMRC and provide us with their unique 10-digit tax reference or charity number.
+          text="<p>The safety and wellbeing of our wish children is our top priority. We have established quality guidelines to ensure every Gift in Kind meets our standards and creates a positive wish experience.</p><p>Depending on your donation, we may need the following documentation:</p>"
+          bulletPointsText={`Proof of being a registered company/sole trader/charity - Any company or small business providing services on a wish must be registered with the New Zealand Companies Office and provide us with their New Zealand Business Number (NZBN). Charities must be registered with Charities Services NZ and provide their registration number.
 Public Liability Insurance - Any tradesperson, venue etc. must have public liability insurance and provide us with a copy of their certificate.
-Evidence of the normal cost of your gift - In order for us to report on your donation for any audit purposes, we need written confirmation from yourselves (e.g., an email) of how much you would normally charge for the goods or services that you are offering Make-A-Wish NZ.
+Evidence of the normal cost of your gift - In order for us to report on your donation for any audit purposes, we need written confirmation from you (e.g., an email) of how much you would normally charge for the goods or services that you are offering Make-A-Wish New Zealand.
 Proof of purchase - If you are donating items, tickets or experiences that you have purchased, you will need to provide us with proof of purchase to show where and how it was purchased, along with official booking details.`}
           imageUrl="https://static.databutton.com/public/70b6a46a-5403-4152-84ce-6a9ec9a87a0f/fundraisingatwork.webp"
           imageAlt="Quality assurance process"
@@ -99,20 +99,20 @@ Proof of purchase - If you are donating items, tickets or experiences that you h
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-                Your gift could help more children like Hattie
+                Your generosity creates lasting memories
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Hattie's wish to have a shopping spree allowed her to have a day that was all about her,
-                rather than her condition. Below, you can watch a video of how Hattie's wish was granted
-                thanks to donations of gifts in kind from people like you. With your support we can bring
-                joy and happiness to children who need it the most. The donations included services such
-                as tickets to attractions, clothes and shoes, a meal at a restaurant.
+                Every Gift in Kind helps us create special moments for wish children across New Zealand.
+                Whether it's tickets to see their favourite team play, a family meal at a special restaurant,
+                or technology that brings joy during treatment - your donation becomes part of a child's
+                wish story. These contributions allow families to focus on what matters most: being together
+                and creating happy memories.
               </p>
               <a
                 href="/wish-stories"
                 className="inline-block bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-full transition duration-300"
               >
-                Read More Wish Stories
+                Read Wish Stories
               </a>
             </div>
           </div>
