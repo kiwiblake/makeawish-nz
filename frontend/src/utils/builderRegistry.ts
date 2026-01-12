@@ -25,6 +25,7 @@ import { BlockQuote } from "@/components/BlockQuote";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import TextBlock from "@/components/TextBlock";
 import { WishJourneyStages } from "@/components/WishJourneyStages"; // Added import
+import { GiftInKindForm } from "@/components/GiftInKindForm"; // Added import
 import { ActionCards } from "@/components/ActionCards";
 import { CTASection } from "@/components/CTASection";
 import { FeaturedWishStories } from "@/components/FeaturedWishStories";
@@ -1275,9 +1276,30 @@ Builder.registerComponent(PartnersLogoSection, {
     name: "Wish Journey Stages",
     description: "Interactive component showing the stages of the wish journey.",
     // Add inputs later if customization is needed from Builder.io
-    inputs: [], 
+    inputs: [],
   });
+
+  // Register GiftInKindForm
+  Builder.registerComponent(GiftInKindForm, {
+    name: "Gift In Kind Form",
+    description: "Multi-step form for donating gifts in kind to Make-A-Wish NZ.",
+    inputs: [
+      {
+        name: "formTitle",
+        type: "text",
+        defaultValue: "Donate a Gift in Kind",
+        helperText: "The title displayed at the top of the form.",
+      },
+      {
+        name: "useBasinUrl",
+        type: "url",
+        defaultValue: "https://usebasin.com/f/d3d78a10dc4c",
+        helperText: "The UseBasin endpoint URL where form submissions will be sent.",
+      },
+    ],
+  });
+
   console.log(
-    "Successfully registered components: HeroSection, MissionStatement, NewsletterSignup, NewsUpdates, WishStories, Heading, TextBlock, BannerPhoto"
+    "Successfully registered components: HeroSection, MissionStatement, NewsletterSignup, NewsUpdates, WishStories, Heading, TextBlock, BannerPhoto, GiftInKindForm"
   );
 }
