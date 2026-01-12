@@ -63,8 +63,8 @@ const giftDetailsSchema = z.object({
   giftTitle: z.string().min(3, "Please provide a title for your gift"),
   giftDescription: z
     .string()
-    .min(20, "Please provide at least 20 characters describing the gift")
-    .max(1000, "Description cannot exceed 1000 characters"),
+    .max(1000, "Description cannot exceed 1000 characters")
+    .optional(),
   estimatedValue: z.string().optional(),
   quantity: z.string().min(1, "Please specify quantity").default("1"),
   condition: z.string().min(1, "Please select the item condition"),

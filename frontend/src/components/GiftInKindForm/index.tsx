@@ -63,19 +63,45 @@ export function GiftInKindForm({
   const { reset, handleSubmit, trigger } = form;
   const isSubmitting = submitStatus === "submitting";
 
+  // Scroll to form section instead of top of page
+  const scrollToForm = () => {
+    const formElement = document.getElementById("donation-form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   // Validate current step fields before proceeding
   const validateAndProceed = async () => {
     const fieldsToValidate = getFieldsForStep(currentStep);
     const isValid = await trigger(fieldsToValidate);
     if (isValid) {
       setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS));
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToForm();
     }
   };
 
   const goBack = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToForm();
+  };
+
+  // Subscribe to newsletter via Campaign Monitor
+  const subscribeToNewsletter = async (email: string, name: string) => {
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name }),
+      });
+      if (response.ok) {
+        console.log("Newsletter subscription successful");
+      } else {
+        console.error("Newsletter subscription failed");
+      }
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+    }
   };
 
   // Submit handler (UseBasin pattern from ContactForm)
@@ -106,6 +132,12 @@ export function GiftInKindForm({
       });
 
       if (response.ok) {
+        // If user opted in for newsletter, subscribe them via Campaign Monitor
+        if (values.receiveNewsletter && values.email) {
+          const fullName = `${values.firstName} ${values.lastName}`.trim();
+          await subscribeToNewsletter(values.email, fullName);
+        }
+
         setSubmitStatus("success");
         console.log("Gift in Kind submission success");
       } else {
