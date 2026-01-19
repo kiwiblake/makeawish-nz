@@ -107,6 +107,11 @@ export function GiftInKindForm({
 
   // Submit handler (UseBasin pattern from ContactForm)
   const onSubmit = async (values: GiftInKindFormData) => {
+    // Only allow submission on the final step
+    if (currentStep !== TOTAL_STEPS) {
+      return;
+    }
+
     // Honeypot check
     if (values._honeypot) {
       console.log("Bot submission detected");
@@ -219,7 +224,16 @@ export function GiftInKindForm({
                 <FormStepIndicator currentStep={currentStep} totalSteps={TOTAL_STEPS} />
 
                 <Form {...form}>
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    onKeyDown={(e) => {
+                      // Prevent Enter key from submitting form unless on final step
+                      if (e.key === "Enter" && currentStep !== TOTAL_STEPS) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className="space-y-6"
+                  >
                     {renderStep()}
 
                     {/* Error Message */}
