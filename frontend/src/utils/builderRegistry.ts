@@ -26,6 +26,7 @@ import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import TextBlock from "@/components/TextBlock";
 import { WishJourneyStages } from "@/components/WishJourneyStages"; // Added import
 import { GiftInKindForm } from "@/components/GiftInKindForm"; // Added import
+import { IconCardsGrid } from "@/components/IconCardsGrid"; // Added import
 import { ActionCards } from "@/components/ActionCards";
 import { CTASection } from "@/components/CTASection";
 import { FeaturedWishStories } from "@/components/FeaturedWishStories";
@@ -1295,6 +1296,126 @@ Builder.registerComponent(PartnersLogoSection, {
         type: "url",
         defaultValue: "https://usebasin.com/f/d3d78a10dc4c",
         helperText: "The UseBasin endpoint URL where form submissions will be sent.",
+      },
+    ],
+  });
+
+  // Register IconCardsGrid
+  Builder.registerComponent(IconCardsGrid, {
+    name: "Icon Cards Grid",
+    description: "A grid of cards with icons, titles, and descriptions. Great for showcasing categories or features.",
+    inputs: [
+      {
+        name: "sectionTitle",
+        type: "text",
+        defaultValue: "Gifts we would love to receive!",
+        helperText: "Main heading for the section.",
+      },
+      {
+        name: "sectionSubtitle",
+        type: "longText",
+        defaultValue: "Certain items, services and experiences are particularly helpful for granting wishes. Here are some of the things we're often looking for:",
+        helperText: "Subtitle text displayed below the heading.",
+      },
+      {
+        name: "cards",
+        type: "list",
+        defaultValue: [
+          { icon: "gamepad", title: "Technology & Gaming", description: "Consoles, tablets, VR headsets" },
+          { icon: "plane", title: "Travel Experiences", description: "Flights, hotel stays, theme parks" },
+          { icon: "ticket", title: "Event Tickets", description: "Sports, concerts, attractions" },
+          { icon: "gift", title: "Toys & Games", description: "Board games, outdoor equipment" },
+          { icon: "shopping", title: "Gift Vouchers", description: "Retail, entertainment, dining" },
+          { icon: "utensils", title: "Experiences", description: "Cooking classes, adventure activities" },
+          { icon: "sparkles", title: "Special Items", description: "Costumes, party supplies, decorations" },
+          { icon: "heart", title: "Services", description: "Professional services, entertainment" },
+        ],
+        subFields: [
+          {
+            name: "icon",
+            type: "text",
+            required: true,
+            defaultValue: "gift",
+            helperText: "Icon name: gift, gamepad, plane, ticket, shopping, utensils, sparkles, heart, star, music, camera, home, car, palette, trophy, users, phone, laptop, tv, headphones",
+            enum: [
+              { label: "Gift", value: "gift" },
+              { label: "Gamepad", value: "gamepad" },
+              { label: "Plane", value: "plane" },
+              { label: "Ticket", value: "ticket" },
+              { label: "Shopping Bag", value: "shopping" },
+              { label: "Utensils", value: "utensils" },
+              { label: "Sparkles", value: "sparkles" },
+              { label: "Heart", value: "heart" },
+              { label: "Star", value: "star" },
+              { label: "Music", value: "music" },
+              { label: "Camera", value: "camera" },
+              { label: "Home", value: "home" },
+              { label: "Car", value: "car" },
+              { label: "Palette", value: "palette" },
+              { label: "Trophy", value: "trophy" },
+              { label: "Users", value: "users" },
+              { label: "Phone", value: "phone" },
+              { label: "Laptop", value: "laptop" },
+              { label: "TV", value: "tv" },
+              { label: "Headphones", value: "headphones" },
+            ],
+          },
+          {
+            name: "title",
+            type: "text",
+            required: true,
+            defaultValue: "Card Title",
+          },
+          {
+            name: "description",
+            type: "text",
+            required: true,
+            defaultValue: "Card description text",
+          },
+        ],
+      },
+      {
+        name: "columns",
+        type: "number",
+        defaultValue: 4,
+        helperText: "Number of columns on desktop (2, 3, or 4). Mobile always shows 2 columns.",
+        enum: [2, 3, 4],
+      },
+      {
+        name: "iconColor",
+        type: "text",
+        defaultValue: "text-primary",
+        helperText: "Tailwind text color class for icons (e.g., 'text-primary', 'text-secondary').",
+      },
+      {
+        name: "titleColor",
+        type: "text",
+        defaultValue: "text-gray-900",
+        helperText: "Tailwind text color class for card titles.",
+      },
+      {
+        name: "descriptionColor",
+        type: "text",
+        defaultValue: "text-gray-600",
+        helperText: "Tailwind text color class for card descriptions.",
+      },
+      {
+        name: "cardBackgroundColor",
+        type: "text",
+        defaultValue: "bg-gray-50",
+        helperText: "Tailwind background class for cards.",
+      },
+      {
+        name: "cardHoverColor",
+        type: "text",
+        defaultValue: "hover:bg-primary/5",
+        helperText: "Tailwind hover background class for cards.",
+      },
+      {
+        name: "sectionBackgroundColor",
+        type: "text",
+        defaultValue: "bg-white",
+        helperText: "Tailwind background class for the entire section.",
       },
     ],
   });
