@@ -22,6 +22,7 @@ type SubmitStatus = "idle" | "submitting" | "success" | "error";
 interface Props {
   useBasinUrl?: string;
   formTitle?: string;
+  anchorId?: string;
 }
 
 const TOTAL_STEPS = 4;
@@ -29,6 +30,7 @@ const TOTAL_STEPS = 4;
 export function GiftInKindForm({
   useBasinUrl = "https://usebasin.com/f/d3d78a10dc4c", // Using same endpoint as ContactForm for now
   formTitle = "Donate a Gift in Kind",
+  anchorId = "donation-form",
 }: Props) {
   const [currentStep, setCurrentStep] = React.useState(1);
   const [submitStatus, setSubmitStatus] = React.useState<SubmitStatus>("idle");
@@ -64,7 +66,7 @@ export function GiftInKindForm({
 
   // Scroll to form section instead of top of page
   const scrollToForm = () => {
-    const formElement = document.getElementById("donation-form");
+    const formElement = document.getElementById(anchorId);
     if (formElement) {
       formElement.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -184,7 +186,7 @@ export function GiftInKindForm({
   };
 
   return (
-    <section id="donation-form" className="py-16 bg-gray-50">
+    <section id={anchorId} className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <Card className="max-w-2xl mx-auto">
           <CardHeader>

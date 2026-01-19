@@ -1292,6 +1292,12 @@ Builder.registerComponent(PartnersLogoSection, {
         helperText: "The title displayed at the top of the form.",
       },
       {
+        name: "anchorId",
+        type: "text",
+        defaultValue: "donation-form",
+        helperText: "The anchor ID for linking to this form (e.g., 'donation-form' allows linking via #donation-form).",
+      },
+      {
         name: "useBasinUrl",
         type: "url",
         defaultValue: "https://usebasin.com/f/d3d78a10dc4c",
