@@ -36,6 +36,9 @@ export function GiftInKindForm({
   const [submitStatus, setSubmitStatus] = React.useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
 
+  // Use ref to track step synchronously (avoids race conditions with async state)
+  const currentStepRef = React.useRef(1);
+
   const form = useForm<GiftInKindFormData>({
     resolver: zodResolver(giftInKindFormSchema),
     defaultValues: {
@@ -77,13 +80,17 @@ export function GiftInKindForm({
     const fieldsToValidate = getFieldsForStep(currentStep);
     const isValid = await trigger(fieldsToValidate);
     if (isValid) {
-      setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS));
+      const nextStep = Math.min(currentStep + 1, TOTAL_STEPS);
+      currentStepRef.current = nextStep; // Update ref synchronously
+      setCurrentStep(nextStep);
       scrollToForm();
     }
   };
 
   const goBack = () => {
-    setCurrentStep((prev) => Math.max(prev - 1, 1));
+    const prevStep = Math.max(currentStep - 1, 1);
+    currentStepRef.current = prevStep; // Update ref synchronously
+    setCurrentStep(prevStep);
     scrollToForm();
   };
 
@@ -107,8 +114,9 @@ export function GiftInKindForm({
 
   // Submit handler (UseBasin pattern from ContactForm)
   const onSubmit = async (values: GiftInKindFormData) => {
-    // Only allow submission on the final step
-    if (currentStep !== TOTAL_STEPS) {
+    // Only allow submission on the final step - use ref for synchronous check
+    if (currentStepRef.current !== TOTAL_STEPS) {
+      console.log("Blocked submission - not on final step");
       return;
     }
 
@@ -227,8 +235,9 @@ export function GiftInKindForm({
                   <form
                     onSubmit={handleSubmit(onSubmit)}
                     onKeyDown={(e) => {
-                      // Prevent Enter key from submitting form unless on final step
-                      if (e.key === "Enter" && currentStep !== TOTAL_STEPS) {
+                      // Always prevent Enter key from submitting form
+                      // Submission only happens via explicit Submit button click
+                      if (e.key === "Enter") {
                         e.preventDefault();
                       }
                     }}
