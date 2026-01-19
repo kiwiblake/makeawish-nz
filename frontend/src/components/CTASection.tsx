@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 interface Props {
   title: string;
   text: string;
-  buttonText: string;
-  buttonLink: string;
+  buttonText?: string;
+  buttonLink?: string;
   backgroundImageUrl?: string; // Optional background image URL
   backgroundImageAlt?: string; // Optional alt text for background image
   backgroundColor?: string; // e.g., 'bg-destructive', used if no background image
@@ -46,15 +46,17 @@ export const CTASection: React.FC<Props> = ({
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           {title}
         </h2>
-        <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+        <p className={`text-lg md:text-xl max-w-2xl mx-auto ${buttonText ? 'mb-8' : ''}`}>
           {text}
         </p>
-        <Link
-          to={buttonLink}
-          className={`inline-block ${buttonBgColor || 'bg-destructive-foreground'} ${buttonTextColor || 'text-destructive'} font-medium py-3 px-8 rounded-full transition duration-300`}
-        >
-          {buttonText}
-        </Link>
+        {buttonText && buttonLink && (
+          <Link
+            to={buttonLink}
+            className={`inline-block ${buttonBgColor || 'bg-destructive-foreground'} ${buttonTextColor || 'text-destructive'} font-medium py-3 px-8 rounded-full transition duration-300`}
+          >
+            {buttonText}
+          </Link>
+        )}
       </div>
     </section>
   );

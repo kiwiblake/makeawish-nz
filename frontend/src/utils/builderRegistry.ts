@@ -429,12 +429,12 @@ Builder.registerComponent(PartnersLogoSection, {
   // Registration for CTASection
   Builder.registerComponent(CTASection, {
     name: "Call To Action Section",
-    description: "A section with text and a button, with optional background image or color.",
+    description: "A section with text and an optional button, with optional background image or color.",
     inputs: [
       { name: "title", type: "text", required: true, defaultValue: "Ready to Make a Difference?" },
       { name: "text", type: "longText", required: true, defaultValue: "Your support helps grant life-changing wishes..." },
-      { name: "buttonText", type: "text", required: true, defaultValue: "Donate Today" },
-      { name: "buttonLink", type: "url", required: true, defaultValue: "/donate" },
+      { name: "buttonText", type: "text", defaultValue: "", helperText: "Optional: Leave empty to hide the button." },
+      { name: "buttonLink", type: "url", defaultValue: "", helperText: "Optional: URL for the button. Required if button text is provided." },
       {
         name: "backgroundImageUrl",
         type: "file",
