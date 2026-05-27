@@ -201,7 +201,7 @@ export const Header: React.FC<Props> = ({
           <img
             src={logoUrl}
             alt={logoAlt}
-            className="h-7 sm:h-10 w-auto" // Keep original sizing
+            className="h-7 sm:h-[7.5rem] w-auto" // Logo desktop sized up 2026-05-27 (Blake): h-10 (2.5rem) → h-[7.5rem] to match new logo asset; mobile h-7 retained pending Blake confirmation
           />
         </Link>
       </div>
