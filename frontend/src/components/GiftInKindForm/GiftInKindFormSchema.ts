@@ -87,6 +87,8 @@ const logisticsSchema = z.object({
   region: z.string().min(1, "Please select your region"),
   deliveryPreference: z.string().min(1, "Please select a delivery preference"),
   availabilityNotes: z.string().max(500).optional(),
+  hearAboutUs: z.string().max(500).optional(),
+  giftMotivation: z.string().max(500).optional(),
 });
 
 // Step 4: Newsletter & Honeypot
@@ -124,7 +126,7 @@ export const getFieldsForStep = (step: number): (keyof GiftInKindFormData)[] => 
     case 2:
       return ["giftCategory", "giftTitle", "giftDescription", "estimatedValue", "quantity", "condition"];
     case 3:
-      return ["location", "region", "deliveryPreference", "availabilityNotes"];
+      return ["location", "region", "deliveryPreference", "availabilityNotes", "hearAboutUs", "giftMotivation"];
     case 4:
       return ["receiveNewsletter"];
     default:

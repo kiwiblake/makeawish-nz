@@ -98,6 +98,16 @@ export function ReviewStep({ form, isSubmitting }: Props) {
               <strong>Notes:</strong> {values.availabilityNotes}
             </p>
           )}
+          {values.hearAboutUs && (
+            <p>
+              <strong>How they heard about us:</strong> {values.hearAboutUs}
+            </p>
+          )}
+          {values.giftMotivation && (
+            <p>
+              <strong>What prompted the gift:</strong> {values.giftMotivation}
+            </p>
+          )}
         </ReviewSection>
       </div>
 

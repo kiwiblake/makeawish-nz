@@ -134,6 +134,38 @@ export function LogisticsStep({ form, isSubmitting }: Props) {
           </FormItem>
         )}
       />
+
+      <FormField
+        control={form.control}
+        name="hearAboutUs"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="font-semibold">
+              How did you hear about Make-A-Wish?
+            </FormLabel>
+            <FormControl>
+              <Input {...field} disabled={isSubmitting} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="giftMotivation"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="font-semibold">
+              What prompted you to offer this gift in kind?
+            </FormLabel>
+            <FormControl>
+              <Input {...field} disabled={isSubmitting} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </div>
   );
 }
